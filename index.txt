@@ -1,6 +1,0 @@
-hello there mate!
-How you doing?
-not good
-no worries mate
-C:\Windows\System32\drivers\etc
-C:\xampp\apache\conf\extra

@@ -60,7 +60,7 @@
             ?>
             <div class="col-6 text-center">
                 
-                <h1 class="my-4"> User details </h1>
+                <h1 class="my-4"> Latest Update </h1>
                 <p class="my-4"> User Name: <i class="mx-3"> <?php echo $name2; ?> </i></p>
                 <p class="my-4"> Password: <i class="mx-3"> <?php echo $password2; ?> </i></p>
                 <p class="my-4"> Email: <i class="mx-3"> <?php echo $email2; ?> </i></p>
@@ -75,10 +75,11 @@
                 $expi = $_POST['experience'];
                 $email = $_POST['email'];
                 
-                // require 'file_handle.php';
+                require 'file_handle.php';
 
                 require 'validate.php';
             }
+            require 'csvfiledetails.php';
         ?>
         <div>
             <h1 class="marTop"> ALL USER DETAILS </h1>
@@ -101,7 +102,7 @@
                             <tr>
                                 <td>'.$name3.'</td>
                                 <td>'.$email3.'</td>';?>
-                                <td><a href='edit.php?id=<?php echo $id3;?>' class='btn btn-primary w-50'> Edit </a></td>
+                                <td><a href='edit.php?id=<?php echo $id3;?>' class='btn btn-secondary w-50'> Edit </a></td>
                             </tr>
                             <?php
                         }

@@ -12,7 +12,7 @@ body{
     margin-bottom: 130px;
 }
 table, th, td{
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     width: 30%;
     border-collapse: collapse;
     
@@ -21,7 +21,7 @@ table{
     text-align: center;
 }
 th, td{
-    padding: 5px;
+    padding: 25px;
 }
 .divrow{
     height: 100%;

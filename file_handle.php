@@ -1,48 +1,46 @@
 <?php 
-    $tmp_name = $_FILES["file"]['tmp_name'];
-    $file_name = $_FILES['file']['name'];
-    $dir = getcwd().'/'.$file_name;
 
-    if(move_uploaded_file($tmp_name, $dir)){
-        echo "File uploaded successfully! <br>";
-    } else {
-        echo "Sorry, file not uploaded <br>";
-    }
+    class FileHandle{
+        public function __construct(){
+            $this->tmp_name = $_FILES["file"]['tmp_name'];
+            $file_name = $_FILES['file']['name'];
+            $this->dir = getcwd().'/'.$file_name;
 
-    $myfile = fopen('resume.csv', "a+");
-            $form_data = array(
-                'Name' => $name,
-                'Password' => $pwd,
-                'Experience' => $expi,
-                'Email' => $email
-            );
-            fputcsv($myfile, $form_data);
-            fclose($myfile);
+            $this->required_ext = array(
+                "pdf", 
+                "doc", 
+                "docx",
+                "txt"
+            ); 
 
-            $myfile = fopen('resume.csv', "r");
-            $row = 1;
-            echo "
-            <table class='tabl'>
-                <tr>
-                    <th>Name</th>
-                    <th>Password</th>
-                    <th>Experience</th>
-                    <th>Email</th>
-                </tr>
-            ";
-            while (($data = fgetcsv($myfile, 1000, ",")) !== FALSE) {
-                $num = count($data);
-                echo "<tr>";
-                
-                $row++;
-                for ($c=0; $c < $num; $c++) {
-                    echo "
-                        <td>$data[$c]</td>
-                    ";
+            $extension_arr = explode(".", $file_name);
+            $this->extension = end($extension_arr);
+        }
+
+        public function updateFile($name, $pwd, $expi, $email){
+            if(in_array($this->extension, $this->required_ext)){
+                if(move_uploaded_file($this->tmp_name, $this->dir)){
+                    echo "<p class='text-success'> File uploaded successfully! </P><br>";
+                } else {
+                    echo "<p class='text-danger'> Sorry, file not uploaded </p><br>";
                 }
-                echo "</tr>";
+            
+                $myfile = fopen('resume.csv', "a+");
+                $form_data = array(
+                    'Name' => $name,
+                    'Password' => $pwd,
+                    'Experience' => $expi,
+                    'Email' => $email
+                );
+                fputcsv($myfile, $form_data);
+                fclose($myfile);
+            } else {
+                die('<p class="text-danger"> Please provide another file type </P>');
             }
-            echo "</table>";
-
-            fclose($myfile);
+        }
+    }
+    
+    $fileHandle = new FileHandle();
+    $fileHandle->updateFile($name, $pwd, $expi, $email);
+    
 ?>

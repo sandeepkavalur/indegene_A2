@@ -1,6 +1,7 @@
 html, body{
     height: 100%;
     width: 100%;
+    background-image: linear-gradient(to right, rgb(212, 209, 209), rgb(48, 47, 47));
 }
 
 .divrow{

@@ -1,10 +1,15 @@
-html, body{
+html{
     height: 100%;
     width: 100%;
+    background-image: linear-gradient(to right, rgb(212, 209, 209), rgb(48, 47, 47));
+}
+body{
+    background-color: transparent;
 }
 
 .tabl{
     margin-top: 30px;
+    margin-bottom: 130px;
 }
 table, th, td{
     border: 1px solid black;
@@ -21,8 +26,12 @@ th, td{
 .divrow{
     height: 100%;
     align-items: center;
+    margin-top: 18%;
 }
 .formSubmit{
     margin-top: 20px;
     margin-bottom: 20px;
+}
+.marTop{
+    margin-top: 130px;
 }

@@ -12,11 +12,12 @@
 </head>
 <body class="container">
     <?php 
+        $get_id = $_GET['id'];
         $conn = mysqli_connect("localhost", "root", "", "test");
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         } else{
-            $sql = "SELECT id, name, password, email FROM form ORDER BY id DESC LIMIT 1";
+            $sql = "SELECT id, name, password, email FROM form WHERE id='$get_id'";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {

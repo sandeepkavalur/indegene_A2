@@ -12,6 +12,7 @@
 </head>
 <body class="container">
     <div class="row divrow">
+        <h1 class="mb-5"> Enter Your Details: </h1>
         <form method="POST" enctype="multipart/form-data" class="col-6 mb-n5">
             <div class="mb-3">
                 <label for="name" class="form-label">User Name</label>
@@ -58,11 +59,11 @@
             }
             ?>
             <div class="col-6 text-center">
-                <pre>
-                <h1> User details </h1>
-                <p> User Name: <i> <?php echo $name2; ?> </i></p>
-                <p> Password: <i> <?php echo $password2; ?> </i></p>
-                <p> Email: <i> <?php echo $email2; ?> </i></p>
+                
+                <h1 class="my-4"> User details </h1>
+                <p class="my-4"> User Name: <i class="mx-3"> <?php echo $name2; ?> </i></p>
+                <p class="my-4"> Password: <i class="mx-3"> <?php echo $password2; ?> </i></p>
+                <p class="my-4"> Email: <i class="mx-3"> <?php echo $email2; ?> </i></p>
             </div>
 
 
@@ -79,6 +80,37 @@
                 require 'validate.php';
             }
         ?>
+        <div>
+            <h1 class="marTop"> ALL USER DETAILS </h1>
+            <table class='tabl w-100'>
+                <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Options</th>
+                </tr>
+                <?php 
+                    $sql3 = "SELECT id, name, password, email FROM form ORDER BY id DESC";
+                    $result3 = mysqli_query($conn, $sql3);
+                    if (mysqli_num_rows($result3) > 0) {
+                        while($row = mysqli_fetch_assoc($result3)) {
+                            $id3 = $row['id'];
+                            $name3 = $row['name'];
+                            $password3 = $row['password'];
+                            $email3 = $row['email'];
+                            echo'
+                            <tr>
+                                <td>'.$name3.'</td>
+                                <td>'.$email3.'</td>';?>
+                                <td><a href='edit.php?id=<?php echo $id3;?>' class='btn btn-primary w-50'> Edit </a></td>
+                            </tr>
+                            <?php
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                ?>
+            </table>
+        </div>
     </div>
 </body>
 </html>

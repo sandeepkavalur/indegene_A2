@@ -15,7 +15,8 @@
         } else{
             $sql = "INSERT INTO form (name, password, email) VALUES ('$name', '$pwd', '$email')";
             if (mysqli_query($conn, $sql)) {
-                header('Location: edit.php');
+                // header('Location: edit.php');
+                echo 'alert(inserted successfully!!!)';
             } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }

@@ -1,0 +1,25 @@
+body{
+    font-family: 'Segoe UI',sans-serif;
+    background-color:cornsilk;
+}
+h1{
+    text-shadow: 0 3px 5px 0 rgba(0,0,0,0.2);
+}
+.inputShadow{
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.2);
+}
+.button{
+    background-color:cornflowerblue;
+    color:white;
+    border-radius: 5px;
+}
+a{
+    text-decoration: none;
+    color:white;
+}
+table, th, td{
+    border: 1px solid gray;
+    border-collapse: collapse;
+    padding: 1px;
+    text-align: center;
+}
